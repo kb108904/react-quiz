@@ -6,7 +6,6 @@ const Quiz = () => {
     const [quizState, dispatch] = useContext(QuizContext)
     const currentQuestion = quizState.currentQuestionIndex + 1
     const totalQuestions = quizState.questions.length
-    console.log('quizState', quizState)
     return (
         <div className="quiz">
             {quizState.showResults && (
@@ -14,10 +13,10 @@ const Quiz = () => {
                     <div className="congratulations">Congratulations</div>
                     <div className="results-info">
                         <div>You have complete the quiz</div>
-                        <div>You got 4 of {quizState.questions.length}</div>
+                        <div>You got {quizState.correctAnswersCount} of {quizState.questions.length}</div>
                     </div>
                     <div className="next-button"
-                    onClick={() => dispatch({ type: 'RSTART' })}
+                    onClick={() => dispatch({ type: 'RESTART' })}
                     >Restart</div>
                 </div>
             )}
